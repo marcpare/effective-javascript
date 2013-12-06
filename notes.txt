@@ -1,0 +1,6 @@
+
+
+Item 30: prototype, getPrototypeOf, and __proto__
+
+Item 31: prefer Object.getPrototypeOf to __proto__
+

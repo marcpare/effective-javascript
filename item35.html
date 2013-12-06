@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+(function () {
+  "use strict";
+  if (typeof Object.create === "undefined") {
+    Object.create = function (prototype) {
+      // creates a no-argument constructor
+      function C () {};
+      C.prototype = prototype;
+      return new C();
+    }
+  }
+
+  function Actor (x, y) {
+    this.x = x;
+    this.y = y;
+  };
+  Actor.prototype.draw = function () {};
+
+  function Spaceship (x, y, color) {
+    Actor.call(this, x, y);
+    this.color = color;
+  };
+
+  Spaceship.prototype = Object.create(Actor.prototype);
+
+  var ss = new Scapeship(10, 10, 'red');
+  console.log(ss);
+})();
+  
+</script>
+</html>
