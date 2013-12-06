@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script>
+"use strict";
+
+var hasOwn = {}.hasOwnProperty;
+
+var d = {"foo":"bar"};
+
+console.log(hasOwn.call(d, "foo"));
+
+console.log({}.prototype); // why does {} have no prototype?
+
+var e = {};
+//Object.prototype.foo = function () {}; // but when I add a method it gets a prototype?
+console.log(e);
+console.log({}.__proto__.hasOwnProperty); // this is how you do it.
+
+// an instance doesn't have "prototype"
+function User (name) {
+  this.name = name;
+}
+User.prototype.hello = function () { console.log("Hi I'm " + this.name); }
+
+var u = new User();
+console.log(u.prototype); // undefined
+
+console.log(User.prototype); // another way to think about it: a function gets a ".prototype"
+
+
+
+</script>
+</html>
