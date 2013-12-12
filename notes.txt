@@ -7,3 +7,103 @@ Item 31: prefer Object.getPrototypeOf to __proto__
 Item 52: convert Array-like object to an array:
 
 [].slice.call(arraylike)
+
+Chapter 6: Library and API Design
+---
+
+Elements of the challenge to API Design
+
+* Users of your code have to learn to read and write it.
+* Unexpected inputs combinations to API functions
+* 
+
+Item 53: Maintain Consistent Conventions
+
+"Your users will thank you. Or maybe they won't even notice--so much the better!"
+"pick a naming convention and adhere to it religiously"
+
+"A great library treats its documentation as training wheels. Once your users get accustomed to your library's conventions, they should be able to do common tasks without ever checking the documentation."
+
+Item 54: Treat Undefined as "no value"
+
+Don't give undefined other semantics. Example given is to use it to mean "give me a random color".
+
+Checking for a defined argument
+
+`
+function Server(port, hostname) {
+  if (hostname === undefined){
+    //...
+  }
+}
+`
+
+Can also use a logical operator
+
+hostname = String(hostname || "localhost");
+
+This latter form doesn't work is `hostname = 0` is valid.
+
+Checking arguments.length is buggy if `undefined` is passed as an argument. It will count the `undefined` argument.
+
+Item 55: Accept Options objects for keyword arguments
+
+"argument creep": slowly adding arguments to a function until it has a dozen (or more!)
+
+`
+alert = new Alert({
+  x:100, y:75, width: 300, etc...
+})
+`
+
+Implementing it:
+
+function Alert(parent, message, opts){
+  opts = opts || {};
+  this.width = opts.width === undefined ? 320 : opts.width; // in case 0
+  this.color = opts.color || "red";
+  this.modal = !!ops.modal; //coerce to boolean
+}
+
+Using `extend` 
+
+opts = extend({
+  width: 320,
+  height: 640
+}, opts); // I caught the errata
+
+A different check for undefined, which avoids a ReferenceEffort if the variable isn't defined.
+
+`
+if (typeof val !== "undefined") {
+}
+`
+
+Item 56: Avoid unnecessary state
+---
+
+"To understand what any individual call to `fillText` does, you don't have to understand all the modifications that precede it."
+
+Item 57: Use structural typing for flexible interfaces
+---
+
+"It is often perfectly sufficient to provide an implementation for an interface like the MediaWiki page format with a simple object literal"
+
+Structural typing: "any object will do so long as it has the expected structure"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

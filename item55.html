@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<script>
+"use strict";
+
+// TEST 1
+/*
+if (x === undefined) { // Reference error
+  console.log('got it');
+}else{
+  console.log('missed it');
+}
+*/
+
+// TEST 2
+/*
+function foo (x) {
+  if (x === undefined) { // Reference error
+    console.log('got it');
+  }else{
+    console.log('missed it');
+  } 
+}
+
+foo(); // got it
+*/
+
+// TEST 3
+/*
+if (typeof x === "undefined") { // avoids reference error
+  console.log('got it');
+}else{
+  console.log('missed it');
+}
+*/
+
+</script>
+</html>
