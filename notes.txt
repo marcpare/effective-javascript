@@ -91,6 +91,44 @@ Item 57: Use structural typing for flexible interfaces
 
 Structural typing: "any object will do so long as it has the expected structure"
 
+Item 58: Distinguish between Array and Array-like
+---
+
+Test if something is a number: 
+
+`typeof x === "number"`
+
+"There may be multiple copies of the standard Array constructor and prototype object" WHAT?!
+
+`
+toString = Object.prototype.toString;
+toString.call(x) === '[object Array]
+`
+
+"Never overload structural types with other overlapping types"
+
+Item 59: Avoid Excessive Coercion
+---
+
+Relying on type-coercion leads to difficult-to-diagnose bugs.
+
+Item 60: Support method chaining
+---
+
+Eliminating temporary variables makes it clearer to readers of the code that the intermediate results are only important as a step along the way to the final result.
+
+Stateful APIs of the _fluent style_ simulate smalltalk's 'method cascades'
+
+Item 61: Don't Block the event queue on I/I
+---
+
+
+
+
+
+
+
+
 
 
 
