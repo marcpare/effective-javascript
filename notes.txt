@@ -119,10 +119,32 @@ Eliminating temporary variables makes it clearer to readers of the code that the
 
 Stateful APIs of the _fluent style_ simulate smalltalk's 'method cascades'
 
-Item 61: Don't Block the event queue on I/I
+Item 61: Don't Block the event queue on I/O
 ---
 
+Basically, don't use synchronous calls (which isn't good style anyway)
 
+Item 62: Use nested or named callback for asynchronous sequencing
+---
+
+You "lift" nested callbacks by naming them.
+
+Shows use of bind to partially apply a function.
+
+Item 63: Be aware of dropped errors
+---
+
+Drop the convention of using curly braces in your if statements for cleaner error handling
+
+`if (error) return onError(error);`
+
+Item 64: Use recursion for asynchronous loops
+---
+
+Example doesn't blow the call stack.
+
+Item 65: Don't block the event queue on computation
+---
 
 
 
