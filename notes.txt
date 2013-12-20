@@ -146,6 +146,32 @@ Example doesn't blow the call stack.
 Item 65: Don't block the event queue on computation
 ---
 
+Shows the Worker API.
+Can spawn a webworker and post messages back and forth.
+
+Uses a recursive function and `setTimeout` to avoid blocking the event queue on a long-running loop.
+
+Item 66: Use a counter to perform concurrent operations
+---
+
+Long discussion of a fairly obvious consequence of async function calls: you can't be sure what order they'll return in.
+
+Item 67: Never call asynchronous callback synchronously
+---
+
+When returning a value from an asynchronous function, use `setTimeout` (or another async call) to avoid surprising clients of the API.
+
+`setTimeout(onsucccess.bind(null, cached), 0);`
+
+[] is truthy
+
+Item 68: Use promises for clean asynchronous logic
+---
+
+Promises avoid modifying shared data.
+
+You can race promises against each other with `select`
+
 
 
 
