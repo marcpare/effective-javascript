@@ -1,3 +1,84 @@
+Item 1: Know which Javascript you are using
+---
+
+- Concatenating strict and non-strict Javascript files is potentially problematic
+- Can be avoided with Immediately Invoked Functions
+
+Item 2: Understand Javascript's Floating-Point Numbers
+---
+
+- Javascript only has doubles
+- So, of course, be careful with the accuracy
+
+Item 3: Beware of implicit coercions
+---
+
+- Javascript will often perform an implicit type coercion rather than throw an error, which will hide bugs until downstream
+
+- NaN is really weird:
+
+var x = NaN;
+x === NaN; // false!
+
+isNaN(NaN) // true, but so is...
+isNaN("foo")
+isNaN(undefined)
+isNaN({})
+
+idiom is: `x !== x`
+
+_truthiness_ as a coercion. 
+
+if (!x) // what if x = 0, false, NaN, or null?
+
+instead, use
+
+`if (typeof x === undefined)`
+
+Item 4: Prefer primitives to object wrappers
+---
+
+Don't set properties on primitive types (it does nothing)
+
+Item 5: Avoid using == with mixed types
+---
+
+Convert a string to a number:
+
+`+form.month.value`
+
+Strict equals `===`
+
+Item 6: Learn the limits of semicolon insertion
+---
+
+Semicolons are inserted...
+
+- Before a } token
+- After on or more newlines
+- At the end of the program input
+- Only when the next input token cannot be parsed
+
+A hairy example:
+
+a = b
+(f());
+
+parses as
+
+a = b(f());
+
+Characters that will result in this tricky situation: (, [, +, -, /
+
+A nifty idiom for testing regular expressions:
+
+/Error/i.test(str) && fail() // fail executed if Error is found in str
+
+Item 7: Think of string as sequences of 16-bit code units
+---
+
+
+
 
 
 Item 30: prototype, getPrototypeOf, and __proto__
