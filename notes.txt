@@ -77,6 +77,20 @@ A nifty idiom for testing regular expressions:
 Item 7: Think of string as sequences of 16-bit code units
 ---
 
+How does this work?
+"Cleverly, the encoding ensures that neither of these 'surrogates' can ever be confused for a valid BMP code point, so you can always tell if you're looking at a surrogate, even if you start searching from somewhere in the middle of a string." (27)
+
+"G clef".length = 6
+"𝄞 clef".length = 7
+
+So, do be careful that libraries handle the full range of Unicode code points.
+
+Variable Scope
+===
+
+Item 8: Minimize Use of the Global Object
+---
+
 
 
 
