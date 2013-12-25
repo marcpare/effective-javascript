@@ -91,6 +91,20 @@ Variable Scope
 Item 8: Minimize Use of the Global Object
 ---
 
+Item 9: Always Declare Local Variables
+---
+
+Lint tools will detect this.
+
+Item 10: Avoid `with`
+---
+
+Ambiguous scoping issues arise. Hurts performance of optimizing compilers.
+
+Item 11: Get Comfortable with Closures
+---
+
+Closures: Functions that keep track of variables from their containing scope
 
 
 
