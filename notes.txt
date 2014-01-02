@@ -106,10 +106,121 @@ Item 11: Get Comfortable with Closures
 
 Closures: Functions that keep track of variables from their containing scope
 
+Item 12: Understand Variable Hoisting
+---
 
+Consider manually hoisting local variable declarations to avoid confusion.
+
+Item 13: Use immediately invoked function expressions to create local scopes
+---
+
+Closures store their outer variables by reference, not by value.
+
+To wrap the value of `i` in a closure
+`
+(function(j) {
+  result[i] = function () { return a[j]; }
+})(i);
+`
+
+Item 14: Beware of unportable scoping of named function expressions
+---
+
+A named function expression:
+`
+var f = find(tree, key) {
+  find(...)
+}
+`
+
+Item 15: Beware of unportable scoping of block-local function declarations
+---
+
+A block local function declaration will trigger a `use strict` error.
+
+Item 16: Avoid Creating Local variables with eval
+---
+
+Item 17: Prefer indirect eval to direct eval
+---
+
+Item 18: Understand the difference between function, method, and constructor calls
+---
+
+The `new` keyword passes a brand new object to `this` and implicitly returns the object.
+
+Item 19: Get comfortable using higher-order functions
+---
+
+Item 20: Use call to call methods with a custom receiver
+---
+
+Item 21: Use apply to call functions with different numbers of arguments
+---
+
+For a variadic function like average(1, 3, 4, 5) ...
+
+var scores = getAllScores();
+average.apply(null, scores);
+
+Item 22: Use arguments to create variadic functions
+---
+
+Implementing both variadic and fixed-artiy functions.
+
+function averageOfArray(a) {
+  for (var i = 0, n = a.length, sum = 0; i < n; i++){
+    sum += a[i];
+  }
+  return sum / n;
+}
+
+function average() {
+  return averageOfArray(arguments);
+}
+
+Item 23: Never modify the arguments objects
+---
+
+arguments is not really an array. So don't mess with it.
+
+Copy it: [].slice.call(arguments)
+
+Item 24: use a variable to save a reference to arguments
+---
+
+A new `arguments` is implicitly bound at the start of each function (duh)
+
+Item 25: Use bind to extract methods with a fixed receiver
+---
+
+Item 26: Use to `bind` to curry functions
+---
+
+function url(p, d, p){
+  return p+d+p;
+}
+function myUrl = url.bind(null, "http", "mysite.com"); // curried
+
+myUrl('index.html')
+
+Item 27: Prefer closures to strings for encapsulating code
+---
+
+(duh)
+
+Item 28: Avoid relying on the tostring method of functions
+---
+
+What?? Why would you do this?
+Debuggers? 
+
+Item 29: Avoid nonstandard stack inspection properties
+---
 
 
 Item 30: prototype, getPrototypeOf, and __proto__
+---
 
 Item 31: prefer Object.getPrototypeOf to __proto__
 
@@ -124,7 +235,6 @@ Elements of the challenge to API Design
 
 * Users of your code have to learn to read and write it.
 * Unexpected inputs combinations to API functions
-* 
 
 Item 53: Maintain Consistent Conventions
 
